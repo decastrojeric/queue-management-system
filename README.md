@@ -140,6 +140,7 @@ This system integrates with:
 # Developers
 
 Queue Management System Group:
-Caraig Mar Franklin I.
-De Castro, Jeric S.
-Villacoba, Jhon Charlie R.
+
+- Caraig, Mar Franklin I.
+- De Castro, Jeric S.
+- Villacoba, Jhon Charlie R.
