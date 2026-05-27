@@ -15,7 +15,7 @@ app.use("/queue", queueRoutes);
 
 app.get("/", (req, res) => {
     res.json({
-        message: "Queue Management System API Running"
+        message: "Queue Management System API  Running"
     });
 });
 
