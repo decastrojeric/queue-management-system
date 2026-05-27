@@ -137,7 +137,7 @@ This system integrates with:
 
 ---
 
-# Developers
+# Developers:
 
 Queue Management System Group:
 
