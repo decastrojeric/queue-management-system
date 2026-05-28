@@ -34,16 +34,29 @@ export const sendToLegacySystem = async (modernData) => {
 };
 
 export const fetchFromLegacySystem = async (patientId) => {
-   
+    if (!LEGACY_URL) {
+        // Fallback: return mock appointment list for development
+        console.log('LEGACY_SYSTEM_URL not configured — returning mock appointments');
+        return [
+            {
+                id: 'mock-1',
+                patientId,
+                doctor: 'Dr. Dev',
+                dept: 'General',
+                date: new Date().toISOString(),
+                status: 'scheduled'
+            }
+        ];
+    }
+
     const response = await fetch(`${LEGACY_URL}/appointment/${patientId}`);
-    
+
     if (!response.ok) {
         throw new Error("Failed to retrieve appointments from Legacy System");
     }
-    
+
     const rawLegacyList = await response.json();
 
-  
     return rawLegacyList.map(legacyRecord => ({
         id: legacyRecord._id,
         patientId: legacyRecord.patientId,

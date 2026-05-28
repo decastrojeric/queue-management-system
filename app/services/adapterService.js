@@ -10,7 +10,7 @@ const fetchAppointmentFromLegacy = async (appointmentId) => {
         const urlByAppointment = `${ADAPTER_LAYER_URL}/api/adapter/appointments/${appointmentId}`;
 
         try {
-            const resp = await axios.get(urlByAppointment, { timeout: 3000 });
+                const resp = await axios.get(urlByAppointment, { timeout: 3000, headers: { Authorization: 'Bearer qms-secret-token' } });
             if (resp && resp.data) {
                 return resp.data;
             }
@@ -23,7 +23,7 @@ const fetchAppointmentFromLegacy = async (appointmentId) => {
         const urlByPatient = `${ADAPTER_LAYER_URL}/api/adapter/appointments/patient/${appointmentId}`;
 
         try {
-            const resp = await axios.get(urlByPatient, { timeout: 3000 });
+            const resp = await axios.get(urlByPatient, { timeout: 3000, headers: { Authorization: 'Bearer qms-secret-token' } });
             if (resp && resp.data && resp.data.success && Array.isArray(resp.data.data) && resp.data.data.length > 0) {
                 // return the first appointment for simplicity
                 return resp.data.data[0];

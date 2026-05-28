@@ -10,6 +10,12 @@ export const authMiddleware = async (req, res, next) => {
     
     const token = authHeader.split(" ")[1];
 
+    // Development bypass: accept a simple shared dev token
+    if (authHeader === 'Bearer qms-secret-token') {
+        req.user = { id: 'dev', role: 'staff' };
+        return next();
+    }
+
     try {
         // 2. Decode and verify the token instantly using your shared secret
         // This will extract the exact payload { id: '...', role: 'doctor' }
